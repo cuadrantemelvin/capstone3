@@ -1,0 +1,18 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+
+.background-main{
+	height: 100vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)) , url("../images/background.jpeg"); /*linear-gradient -- to make picture looks darker*/
+	background-position: center; 
+	background-size: cover; 
+	background-repeat: no-repeat;
+}
+
