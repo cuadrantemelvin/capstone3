@@ -44,7 +44,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                         <li class="nav-menu"><a class="nav-link" href="{{url('/home')}}">Newsfeed</a></li>
-                        <li class="nav-menu"><a class="nav-link" href="{{url('/findFriends')}}">Find Friends</a></li>
+                       
                         <li class="nav-menu"><a class="nav-link" href="{{url('/profile')}}/{{Auth::user()->slug}}">TimeLine</a></li>
                         <li class="nav-menu"><a class="nav-link" href="{{url('/requests')}}">Friend Requests <span class="badge" style="background: red;"  >{{App\Friendship::where('status',0)
                             ->where('user_requested', Auth::user()->id)->count()}}</span>
@@ -118,9 +118,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('editProfile') }}">
-                                        {{ __('Edit Profile') }}
-                                    </a>
+                                    
+                                     <a class="dropdown-item" href="{{url('/findFriends')}}">Find Friends</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
