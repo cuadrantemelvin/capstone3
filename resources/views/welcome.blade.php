@@ -4,10 +4,10 @@
     <div class="container py-5"></section>
       <div class="row">
         <div class="mx-auto col-lg-8 col-md-10">
-          <h1 class="display-4 mb-4 text-primary">FriendBits!</h1>
-          <p class="lead mb-5">Tell them your story with your friends. </p> 
-          <a href="#project" class="btn btn-lg btn-primary mx-1">View Projects</a> 
-          <a href="./assets/files/Cuadrante-Melvin.pdf" class="btn btn-lg btn-outline-primary" download>See Resume</a>
+          <h1 class="display-4 mb-4 text-primary">Welcome to FriendBits!</h1>
+          <p class="lead mb-5">Tell them your story with your friends. LIKE, POST, COMMENT!</p> 
+          <a href="{{ route('login') }}" class="btn btn-lg btn-outline-primary" >Login</a>
+          <a href="{{ route('register') }}" class="btn btn-lg btn-primary mx-1">Join Now!</a> 
         </div>
       </div>
     </div>
