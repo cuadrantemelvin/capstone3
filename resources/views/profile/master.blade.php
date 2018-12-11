@@ -45,7 +45,7 @@
                         @auth
                         <li class="nav-menu"><a class="nav-link" href="{{url('/home')}}">Newsfeed</a></li>
                        
-                        <li class="nav-menu"><a class="nav-link" href="{{url('/profile')}}/{{Auth::user()->slug}}">TimeLine</a></li>
+                        <li class="nav-menu"><a class="nav-link" href="{{url('/profile')}}/{{Auth::user()->slug}}">Timeline</a></li>
                         <li class="nav-menu"><a class="nav-link" href="{{url('/requests')}}">Friend Requests <span class="badge" style="background: red;"  >{{App\Friendship::where('status',0)
                             ->where('user_requested', Auth::user()->id)->count()}}</span>
 
