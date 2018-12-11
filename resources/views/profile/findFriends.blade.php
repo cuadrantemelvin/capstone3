@@ -31,7 +31,7 @@
 			                                ?>	
 											<a class="btn btn-info" href="{{url('/addFriends/')}}/{{$uList->id}}">Add Friend</a>
 										<?php } else {?>
-                                    		<p>Request Already Sent</p>
+                                    		<p class="alert alert-success">Request Already Sent</p>
                                 <?php }?>
 									
 								</div>
