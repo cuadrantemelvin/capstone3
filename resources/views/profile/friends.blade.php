@@ -21,7 +21,7 @@
 						<div class="col-md-3">
 							<div class="card h-100">
 								<div class="card-header">
-									<img src="{{$uList->pic}}" style="width: 200px; height: 200px;">
+									<img src="{{$uList->pic}}" style="width: 200px; height: auto;">
 								</div>
 								<div class="card-body text-center">
 									<h4><a href="{{url('/profile')}}/{{$uList->slug}}">{{$uList->name}}</a></h4>
