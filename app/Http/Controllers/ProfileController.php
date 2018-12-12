@@ -18,12 +18,11 @@ class ProfileController extends Controller
             ->leftJoin('profiles', 'profiles.user_id','users.id')
             ->where('slug', $slug)
             ->get();
-   
-         return view('profile.index', compact('userData'))->with('data', Auth::user()->profile);
-
-        dd($user->id);
-
+       $posts = User::where('slug', $slug)->first()->posts;
+         return view('profile.index', compact('userData'))->with('data', Auth::user()->profile)->withPosts($posts);
     }
+
+    
 
     public function changePhoto(){
     	return view('profile.pic');

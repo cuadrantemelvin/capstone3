@@ -24,4 +24,56 @@ class CommentController extends Controller
     	Session::flash('success','Your comment was sent');
     	return redirect()->back();
     }
+    // public function edit($id)
+    // {
+    //     $comment = Comment::find($id);
+    //     if (Auth::user()->id != $comment->user_id) {
+    //         abort(404);
+    //     }
+    //     if ($comment == null) {
+    //         abort(404);
+    //     }
+        
+    //     return view('posts.edit')->withPost($post);
+    // }
+
+    public function update(Request $request, $id)
+    {
+        $comment = Comment::find($id);
+
+        if (Auth::user()->id != $comment->user_id) {
+            abort(404);
+        }
+        if ($comment == null) {
+            abort(404);
+        }
+        $this->validate($request, [
+            'comment' => "required",
+           
+            ]);
+        $comment->comment = $request->comment;
+
+
+
+        $comment->user_id = Auth::user()->id;
+       
+        $comment->save();
+
+        Session::flash('success', 'Comment was successfully updated');
+        return redirect()->back();
+    }
+    
+    public function destroy($id)
+    {
+        $comment = Comment::find($id);
+        if (Auth::user()->id != $comment->user_id) {
+            abort(404);
+        }
+        if ($comment == null) {
+            abort(404);
+        }
+        $comment->delete();
+        Session::flash("success","Comment successfully deleted.");
+        return redirect()->back();
+    }
 }

@@ -55,15 +55,62 @@
                         <div class="card-body pb-0">
                             
                                 <img src="{{$comment->user->pic}}" style="width: 50px; height: 50px; border-radius: 50%; margin: 5px;"> 
-                                <span><strong>{{$comment->user->name}}</strong> {{$comment->comment}}</span>
-                            
-                            
-                            <div class="pull-right">
-                                <!-- <small>Comment by {{$comment->user->username}}</small> -->
+                                <span><strong>{{$comment->user->name}}</strong> {{$comment->comment}}</span>&nbsp;
                                 <small>{{ $comment->updated_at->diffForHumans() }}</small>
+                            
+                            @if(Auth::user()->id == $comment->user->id)
+                            <div class="pull-right">
+                                <a href="#" data-toggle="modal" data-target="#editComment{{$comment->id}}">Edit | 
+                                <a href="#" data-toggle="modal" data-target="#deleteComment{{$comment->id}}">Delete</a>
                             </div>
+                            @endif
+                            <!-- Edit Modal -->
+                            <div class="modal fade" id="editComment{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Comment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="/comment/{{$comment->id}}" method="POST">
+                                        {{csrf_field()}}
+                                        {{method_field('PATCH')}}
+                                        <div class="form-group">
+                                            <textarea name="comment" class="form-control">{{$comment->comment}}</textarea>
+                                            <button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+                                        </div>
+                                    </form>
+                                  </div>
+                                 </div>
+                                </div>
+                               </div>
+                            <div id="deleteComment{{$comment->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Confirm Delete</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you want to delete comment?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="POST" action="/comment/{{$comment->id}}/delete">
+                                                {{csrf_field()}}
+                                                {{method_field("DELETE")}}
+                                                <button type="submit" class="btn btn-primary">Confirm</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                         </div>
-                    </div>
 
                     @endforeach
               
@@ -112,12 +159,28 @@
                         <button type="submit" class="btn btn-primary">Confirm</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     </form>
-
-                    
                 </div>
             </div>
         </div>
     </div>
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 </div>
 @endsection

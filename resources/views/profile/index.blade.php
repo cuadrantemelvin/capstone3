@@ -36,8 +36,11 @@
 		</div>
 		<div class="col-md-12">
 		<br>
-		<p>{{Auth::user()->posts()->count()}} Posts created</p>
-		@foreach(Auth::user()->posts->sortByDesc('created_at') as $post)
+		@foreach($posts as $post)
+
+			@if(Auth::user()->id == $post->user->id)
+			<p>{{Auth::user()->posts()->count()}} Posts created</p>
+			@endif
 			<div class="card mb-4">
 				
 			    <div class="card-header">

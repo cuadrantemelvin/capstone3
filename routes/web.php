@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::delete('/post/{id}/delete', 'PostController@destroy')->name('post.delete');
     Route::post('/like','PostController@postLikePost')->name('like');
     Route::post('/comment','CommentController@index');
+    Route::patch('/comment/{id}','CommentController@update');
+    Route::delete('/comment/{id}/delete','CommentController@destroy')->name('comment.delete');
 
 });
 
