@@ -11,7 +11,7 @@
 				<div class="card-body">
 					<div class="row">
 						@foreach($allUsers as $uList)
-						<div class="col-md-3">
+						<div class="col-md-3 mb-4">
 							<div class="card h-100">
 								<div class="card-header text-center">
 									<img src="{{$uList->pic}}" style="width: auto; height: 100px; border-radius: 50%;"><br>
