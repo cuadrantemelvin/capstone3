@@ -60,7 +60,7 @@
                             
                             @if(Auth::user()->id == $comment->user->id)
                             <div class="pull-right">
-                                <a href="#" data-toggle="modal" data-target="#editComment{{$comment->id}}">Edit | 
+                                <a href="#" data-toggle="modal" data-target="#editComment{{$comment->id}}">Edit</a> | 
                                 <a href="#" data-toggle="modal" data-target="#deleteComment{{$comment->id}}">Delete</a>
                             </div>
                             @endif

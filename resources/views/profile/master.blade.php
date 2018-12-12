@@ -45,7 +45,6 @@
                         @auth
                         <li class="nav-menu"><a class="nav-link" href="{{url('/home')}}">Newsfeed</a></li>
                        
-                        <li class="nav-menu"><a class="nav-link" href="{{url('/profile')}}/{{Auth::user()->slug}}">Timeline</a></li>
                         <li class="nav-menu"><a class="nav-link" href="{{url('/requests')}}">Friend Requests <span class="badge" style="background: red;"  >{{App\Friendship::where('status',0)
                             ->where('user_requested', Auth::user()->id)->count()}}</span>
 
@@ -102,13 +101,8 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Sign In</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
 
                             <img src="{{Auth::user()->pic}}" style="width: 50px; height: 50px; border-radius: 50%;" >
@@ -119,6 +113,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
+                                     <a class="dropdown-item" href="{{url('/profile')}}/{{Auth::user()->slug}}">Timeline</a>
                                      <a class="dropdown-item" href="{{url('/findFriends')}}">Find Friends</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
